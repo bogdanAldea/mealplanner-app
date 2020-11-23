@@ -27,18 +27,18 @@ def read_json_from_file(json_file) -> dict:
 
 
 # VERIFY IF LOADED DATA ALREADY EXISTS IN GIVEN JSON DATA
-def data_is_stored(new_loaded_data: str, current_data: dict) -> bool:
+def data_is_stored(new_data: str, current_loaded_data: dict) -> bool:
     """
     FUNCTION CHECKS IF A NEW DATA IS STORED OR NOT IN CURRENT DATA BY COMPARING KEYS
-    :param new_loaded_data: KEY OF DATA TO BE UPDATED
-    :param current_data: DICT WITH CURRENT LOADED DATA
+    :param new_data: KEY OF DATA TO BE UPDATED
+    :param current_loaded_data: DICT WITH CURRENT LOADED DATA
     :return: TRUE IF DATA IS STORED, FALSE F DATA IS NOT STORED
     """
     temp_current_keys = list()
-    for current_data_keys in current_data.keys():
+    for current_data_keys in current_loaded_data.keys():
         temp_current_keys.append(current_data_keys)
-    if new_loaded_data in temp_current_keys:
-        print("{} already stored.".format(new_loaded_data))
+    if new_data in temp_current_keys:
+        print("{} already stored.".format(new_data))
         return True
     else:
         return False
