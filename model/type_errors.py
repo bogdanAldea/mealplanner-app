@@ -14,7 +14,7 @@ def request_type_int(prompt_message: str, error_message: str) -> int:
     while True:
         # ask for input / if input is not a digit, catch the error and keep going
         try:
-            raw_input = int(prompt_message)
+            raw_input = int(input(prompt_message))
             return raw_input
         except ValueError:
             print(error_message)
