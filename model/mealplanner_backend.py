@@ -69,3 +69,6 @@ def start_mealplanner(available_options: list, recipe_data: dict, stock_data: di
     shopping_cart, updated_stocks = get_shopping_list(preliminary_list=pre_shop_list, stock_json_data=stock_data)
     return shopping_cart, updated_stocks
 
+
+def write_cart_list_to_file(CART_LIST: list):
+    file = open()
