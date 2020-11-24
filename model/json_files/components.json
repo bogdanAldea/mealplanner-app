@@ -1,0 +1,34 @@
+{
+    "Legume": [
+        "morcovi",
+        "telina",
+        "ceapa",
+        "rucola"
+    ],
+    "Carne": [
+        "afumatura",
+        "piept pui",
+        "pulpe pui",
+        "carne tocata"
+    ],
+    "Fainoase": [
+        "paste",
+        "faina",
+        "tortilla"
+    ],
+    "Lactate": [
+        "parmezan, mozzarella",
+        "lapte"
+    ],
+    "Alte": [
+        "oua",
+        "taietei orez"
+    ],
+    "Condimente": [
+        "boia afumata",
+        "busuioc",
+        "usturoi granulat",
+        "oregano",
+        "chimion"
+    ]
+}

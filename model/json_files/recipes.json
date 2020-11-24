@@ -1,0 +1,28 @@
+{
+    "Carbonara": {
+        "paste": 200,
+        "oua": 3,
+        "afumatura": 150,
+        "parmezan": 200
+    },
+    "Omleta": {
+        "oua": 3,
+        "ceapa": 1
+    },
+    "Cartofi Prajiti": {
+        "oua": 3,
+        "ceapa": 1
+    },
+    "Ciorba": {
+        "morcovi": 2,
+        "telina": 1,
+        "ceapa": 1,
+        "afumatura": 500,
+        "lapte": 100
+    },
+    "Bolognese": {
+        "ceapa": 1,
+        "carne tocata": 250,
+        "paste": 250
+    }
+}
