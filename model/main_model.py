@@ -29,6 +29,9 @@ class Model:
     def read_components_items(self):
         return read_backend.read_items(json_data=self.components_data, data_type_is_dict=True)
 
+    def get_stock_data(self):
+        return self.stocks_data
+
     def add_new_recipe(self) -> dict:
         NEW_RECIPE = editing_backend.create_new_recipe(recipe_components=self.components_data, loaded_json_data=self.recipe_data)
         return NEW_RECIPE
@@ -64,4 +67,7 @@ class Model:
         json_backend.update_json_file(filename=self.components_database, updated_jso_data=UPDATED_COMPONENTS_DATA)
         json_backend.update_json_file(filename=self.stocks_database, updated_jso_data=UPDATED_STOCK_DATA)
 
-
+    def edit_stock_data(self):
+        NEW_STOCK_DATA = stocks_backend.update_stock_values(stocks_json_data=self.stocks_data)
+        UPDATE_STOCK = json_backend.update_json_data(current_data=self.stocks_data, new_data_to_store=NEW_STOCK_DATA)
+        json_backend.update_json_file(filename=self.stocks_database, updated_jso_data=UPDATE_STOCK)

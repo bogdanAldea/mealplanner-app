@@ -1,3 +1,5 @@
+from termcolor import colored
+
 """
 Module for validating int and string values
 """
@@ -17,7 +19,7 @@ def request_type_int(prompt_message: str, error_message: str) -> int:
             raw_input = int(input(prompt_message))
             return raw_input
         except ValueError:
-            print(error_message)
+            print(colored(error_message, "red"))
             continue
 
 
@@ -41,7 +43,7 @@ def request_type_alpha(prompt_message: str, error_message: str) -> str:
         checks if all strings are alpha"""
         string_integrity = check_alpha_integrity(LIST=split_input)
         if string_integrity is False:
-            print(error_message)
+            print(colored(error_message, "red"))
             continue
         else:
             return " ".join(split_input)

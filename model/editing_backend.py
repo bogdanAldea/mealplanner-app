@@ -37,7 +37,7 @@ def create_new_recipe(recipe_components: dict, loaded_json_data: dict) -> dict:
     for ingredient_category, ingredient_list in recipe_components.items():
         while True:
             # USER IS ASKED IF WANTS TO ADD A SPECIFIC CATEGORY
-            add_category = request_type_alpha(prompt_message="Adauga {}?[da/nu]".format(ingredient_category),
+            add_category = request_type_alpha(prompt_message="Adauga {}?[da/nu] >> ".format(ingredient_category),
                                               error_message="Eroare input: optiunea trebuie sa fie formata doar din litere.")
             if add_category == 'da' or add_category == 'da'.capitalize() or add_category == 'da'.upper():
                 # IF CATEGORY IS SELECTED -> PRINT EACH INGREDIENT AND ASK FOR QUANTITY
