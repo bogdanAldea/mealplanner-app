@@ -7,9 +7,9 @@
         "ardei": 0
     },
     "Carne": {
-        "afumatura": 0,
-        "piept pui": 0,
-        "pulpe pui": 0,
+        "afumatura": 200,
+        "piept pui": 1200,
+        "pulpe pui": 1500,
         "carne tocata": 100
     },
     "Fainoase": {
