@@ -23,6 +23,12 @@ class Model:
         self.components_data = json_backend.read_json_from_file(json_file=self.components_database)  # dict
         self.stocks_data = json_backend.read_json_from_file(json_file=self.stocks_database)  # dict
 
+    def read_recipe_items(self):
+        return read_backend.read_items(json_data=self.recipe_data, data_type_is_dict=True)
+
+    def read_components_items(self):
+        return read_backend.read_items(json_data=self.components_data, data_type_is_dict=True)
+
     def add_new_recipe(self) -> dict:
         NEW_RECIPE = editing_backend.create_new_recipe(recipe_components=self.components_data, loaded_json_data=self.recipe_data)
         return NEW_RECIPE
@@ -34,6 +40,14 @@ class Model:
     def add_new_ingredient_to_components(self, menu) -> tuple:
         EDITED_COMPONENTS, EDITED_STOCKS = editing_backend.add_new_ingredient(components_data=self.components_data, stocks_data=self.stocks_data, menu_listing=menu)
         return EDITED_COMPONENTS, EDITED_STOCKS
+
+    def create_new_mealplan(self, menu):
+        SHOPPING_CART, EDITED_STOCKS = mealplanner_backend.start_mealplanner(available_options=menu, recipe_data=self.recipe_data, stock_data=self.stocks_data)
+        return SHOPPING_CART, EDITED_STOCKS
+
+    @staticmethod
+    def write_shopping_cart(mealplan_cart):
+        mealplanner_backend.write_cart_list_to_file(CART_LIST=mealplan_cart)
 
     def update_recipe_data(self, new_recipe_data):
         UPDATED_DATA_TO_STORE = json_backend.update_json_data(current_data=self.recipe_data, new_data_to_store=new_recipe_data)
