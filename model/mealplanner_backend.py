@@ -1,4 +1,4 @@
-
+import os
 
 """
 Module for handling all components for the mealplanner functionality
@@ -70,5 +70,21 @@ def start_mealplanner(available_options: list, recipe_data: dict, stock_data: di
     return shopping_cart, updated_stocks
 
 
-def write_cart_list_to_file(CART_LIST: list):
-    file = open()
+def write_cart_list_to_file(CART_LIST: dict):
+    separator = 20 * "="
+    filename = "mealplan"
+    shopping_cart_index = 0
+    while True:
+        file_path = filename + str(shopping_cart_index) + ".txt"
+        if os.path.isfile(file_path) is True:
+            shopping_cart_index += 1
+            continue
+        else:
+            file = open(file_path, "w")
+            for category_name, components in CART_LIST.items():
+                file.write(separator + "\n")
+                file.write(category_name.upper() + "\n")
+                for ingredient, quantity in components.items():
+                    file.write(ingredient + ": " + str(quantity) + "\n")
+            file.close()
+            break
