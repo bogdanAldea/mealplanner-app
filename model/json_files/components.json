@@ -3,7 +3,8 @@
         "morcovi",
         "telina",
         "ceapa",
-        "rucola"
+        "rucola",
+        "ardei"
     ],
     "Carne": [
         "afumatura",
@@ -30,5 +31,10 @@
         "usturoi granulat",
         "oregano",
         "chimion"
+    ],
+    "Fructe": [
+        "avocado",
+        "mere",
+        "banane"
     ]
 }

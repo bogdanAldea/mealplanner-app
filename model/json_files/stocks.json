@@ -3,16 +3,17 @@
         "morcovi": 10,
         "telina": 2,
         "ceapa": 0,
-        "rucola": 0
+        "rucola": 0,
+        "ardei": 0
     },
     "Carne": {
-        "afumatura": 50,
+        "afumatura": 0,
         "piept pui": 0,
         "pulpe pui": 0,
         "carne tocata": 100
     },
     "Fainoase": {
-        "paste": 200,
+        "paste": 0,
         "faina": 1000,
         "tortilla": 0
     },
@@ -22,7 +23,7 @@
         "lapte": 500
     },
     "Alte": {
-        "oua": 10,
+        "oua": 0,
         "taietei orez": 0
     },
     "Condimente": {
@@ -31,5 +32,10 @@
         "usturoi granulat": 0,
         "oregano": 0,
         "chimion": 0
+    },
+    "Fructe": {
+        "avocado": 0,
+        "mere": 0,
+        "banane": 0
     }
 }
