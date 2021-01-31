@@ -25,3 +25,9 @@ class ComponentManager:
 
     def update(self, data_to_update: dict) -> None:
         json_db.update_file(file_path=self.database, new_data=data_to_update)
+
+    def select_component_values(self, request: int) -> list:
+        installed_components: list = list(self.loaded_data.keys())
+        target_component: str = installed_components[request-1]
+        ingredients_value_list: list = self.loaded_data.get(target_component)
+        return ingredients_value_list
