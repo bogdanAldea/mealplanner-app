@@ -1,2 +1,0 @@
-import mealplanner_app.menu_components.menu_views
-import mealplanner_app.menu_components.menu_backend
