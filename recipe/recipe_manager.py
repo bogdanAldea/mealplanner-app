@@ -1,6 +1,6 @@
 """
 """
-import mealplanner_app.json_db as json_db
+import json_db as json_db
 
 
 class RecipeManager:

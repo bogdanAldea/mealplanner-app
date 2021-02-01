@@ -1,7 +1,7 @@
 """
 """
-import mealplanner_app.components.component_manager as component_manager
-import mealplanner_app.components.component as component
+import components.component_manager as component_manager
+import components.component as component
 
 
 class ComponentCreator(component_manager.ComponentManager):

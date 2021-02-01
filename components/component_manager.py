@@ -1,6 +1,6 @@
 """
 """
-import mealplanner_app.json_db as json_db
+import json_db
 
 
 class ComponentManager:
@@ -31,3 +31,7 @@ class ComponentManager:
         target_component: str = installed_components[request-1]
         ingredients_value_list: list = self.loaded_data.get(target_component)
         return ingredients_value_list
+
+    @staticmethod
+    def select_from_values(request, values):
+        return values[request-1]
