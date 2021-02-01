@@ -1,0 +1,9 @@
+{
+  "Meat": ["carne-tocata", "pulpe-pui-os"],
+  "Dairy": ["lapte", "smantana", "parmezan"],
+  "Vegetable": ["cartofi", "morcovi", "ceapa"],
+  "FLour":  [],
+  "Fruit":  [],
+  "Other":  ["oua"],
+  "Custom":  []
+}
