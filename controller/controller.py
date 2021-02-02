@@ -1,24 +1,26 @@
 """
 """
 import models
+import views
 import os
 
 
 class Controller:
     EXCEPTIONS = models.exceptions
 
-    def __init__(self, VIEWS, MODEL):
-        self.models = MODEL
-        self.views = VIEWS
+    def __init__(self, VIEWS, MODELS):
+        self.models: models.models = MODELS
+        self.views: views = VIEWS
 
     def component_selector(self, components_list, recipe_status):
 
         # print menu to the screen via views class
-        self.get_menu(values=components_list, recipe_status=recipe_status)
+        component_screen = self.views.ComponentSelector(components_list, recipe_status)
+        component_screen.render_screen()
 
         # get user request for component selection
         while True:
-            component_selection_request = input("Select component >>> ")
+            component_selection_request = input("\nSelect component >>> ")
 
             # check if request is value of exit/back
             if component_selection_request in ["q", "Q"]:
@@ -37,11 +39,12 @@ class Controller:
     def ingredient_selector(self, ingredients_list, recipe_status):
 
         # print menu to the screen via views class
-        self.get_menu(values=ingredients_list, recipe_status=recipe_status)
+        ingredient_screen = self.views.IngredientSelector(ingredient_menu_list=ingredients_list, recipe_status=recipe_status)
+        ingredient_screen.render_screen()
 
         # get user request for ingredient selection
         while True:
-            ingredient_selection_request = input("Select ingredient >>> ")
+            ingredient_selection_request = input("\nSelect ingredient >>> ")
 
             # check if request is value of exit/back
             if ingredient_selection_request in ["q", "Q"]:
@@ -76,7 +79,8 @@ class Controller:
     def create_recipe(self):
 
         # refresh and clear screen
-        os.system('cls')
+        screen = self.views.Create_Recipe()
+        screen.render_screen()
 
         # recipe blueprint class instance
         recipe_blueprint = self.models.recipe_creator.get_recipe_blueprint()
@@ -88,7 +92,9 @@ class Controller:
         recipe_ingredients = dict()
 
         # recipe status (informative purpose)
-        recipe_status = {recipe_name: recipe_ingredients}
+        recipe_status = {
+            "Recipe name": recipe_name,
+            "Recipe ingredients": recipe_ingredients}
 
         # components list for views to display as menu
         components = self.models.component_creator.installed_components.keys()
@@ -116,15 +122,35 @@ class Controller:
         recipe_object = recipe_blueprint(name=recipe_name, ingredients=recipe_ingredients)
         return recipe_object
 
+    def save_recipe(self, recipe_to_save):
+
+        # refresh and clear screen / render save screen
+        save_screen = self.views.SaveRecipe(recipe_to_save)
+        save_screen.render_screen()
+
+        # prompt user to save /not save recipe
+        while True:
+            try:
+                request = self.validate_save_request()
+
+                if request in ["y", "Y"]:
+
+                    recipe = recipe_to_save.__dict__
+                    self.models.save_recipe(recipe)
+                    save_screen.display_saving_status(status="Recipe is being saved...")
+                    break
+
+                elif request in ["n", "N"]:
+                    print("recipe not saved...")
+                    break
+            except Controller.EXCEPTIONS.InvalidSaveRequest as e:
+                save_screen.display_error(exception_error=e)
+                continue
+
     @staticmethod
-    def get_menu(values, recipe_status):
-        os.system('cls')
-        print(recipe_status)
-        print()
-
-        for i, j in enumerate(values):
-            print(f'[{i+1}] {j}')
-
-
-
-
+    def validate_save_request():
+        save_request = input("\nWant to save recipe? >>> ")
+        if save_request in ["y", "Y"] or save_request in ['n', "N"]:
+            return save_request
+        else:
+            raise Controller.EXCEPTIONS.InvalidSaveRequest("Option invalid. The valid options are q or Q.")
