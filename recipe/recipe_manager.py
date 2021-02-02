@@ -14,9 +14,8 @@ class RecipeManager:
         return json_db.read_file(file_path=self.database)
 
     def save(self, data_to_save) -> list:
-        saved_data = json_db.save_data(new_data=data_to_save)
-        self.loaded_data.append(saved_data)
-        return self.loaded_data
+        self.loaded_data.append(data_to_save)
+        json_db.save_data(new_data=self.loaded_data, file=self.database)
 
     def load(self) -> list:
         loaded_data = json_db.load_data(file_data=self.connection)
