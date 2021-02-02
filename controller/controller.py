@@ -153,4 +153,4 @@ class Controller:
         if save_request in ["y", "Y"] or save_request in ['n', "N"]:
             return save_request
         else:
-            raise Controller.EXCEPTIONS.InvalidSaveRequest("Option invalid. The valid options are q or Q.")
+            raise Controller.EXCEPTIONS.InvalidSaveRequest("Option invalid. The valid options are Y/y or Q/q.")
