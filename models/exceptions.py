@@ -10,3 +10,6 @@ class MenuOptionInvalid(Exception):
     ...
 
 
+class InvalidSaveRequest(Exception):
+    ...
+
