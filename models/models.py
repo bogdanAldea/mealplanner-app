@@ -18,7 +18,7 @@ class Model:
                                                                                installed_components=self.installed_components)
 
     def save_recipe(self, new_recipe: dict):
-        ...
+        self.recipe_creator.save(data_to_save=new_recipe)
 
     def save_component(self, new_component: dict):
         ...
@@ -35,4 +35,3 @@ class Model:
             return request
         else:
             raise exceptions.MenuOptionInvalid("Your menu option is invalid. Try again...")
-
