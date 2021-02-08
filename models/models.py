@@ -17,8 +17,10 @@ class Model:
         self.component_creator = components.component_creator.ComponentCreator(database_path=self.components_file,
                                                                                installed_components=self.installed_components)
 
-    def save_recipe(self, new_recipe: dict):
-        self.recipe_creator.save(data_to_save=new_recipe)
+    def save_recipe(self, new_recipe):
+
+        recipe_dict = new_recipe.__dict__
+        self.recipe_creator.save(data_to_save=recipe_dict)
 
     def save_component(self, new_component: dict):
         ...
@@ -35,3 +37,16 @@ class Model:
             return request
         else:
             raise exceptions.MenuOptionInvalid("Your menu option is invalid. Try again...")
+
+    def validate_ingredient_name(self, name_request, stored_values):
+        if self.component_creator.ingredient_is_stored(name_to_validate=name_request, stored_values=stored_values):
+            raise exceptions.IngredientIsStored(f"Ingredient with the the {name_request} is already stored.")
+        else:
+            return name_request
+
+    @staticmethod
+    def validate_save_request(request, options):
+        if request in options:
+            return request
+        else:
+            raise exceptions.InvalidSaveRequest("Your request is invalid.name")
