@@ -1,2 +1,2 @@
-import models.models
+import models.main_models
 import models.exceptions
