@@ -42,17 +42,22 @@ class Screen:
 
     def display_recipe_status(self):
 
-        # unpack dictionary keys & values
-        field_a, field_b = list(self.recipe_status.keys())
-        content_a, content_b = list(self.recipe_status.values())
+        if self.recipe_status is not None:
 
-        # add color and formatting to keys
-        field_a = termcolor.colored(text=field_a.upper(), color="green")
-        field_b = termcolor.colored(text=field_b.upper(), color="green")
+            # unpack dictionary keys & values
+            field_a, field_b = list(self.recipe_status.keys())
+            content_a, content_b = list(self.recipe_status.values())
 
-        # print status to the screen
-        status = f"{field_a}: {content_a}\n{field_b}: {content_b}"
-        print(status)
+            # add color and formatting to keys
+            field_a = termcolor.colored(text=field_a.upper(), color="green")
+            field_b = termcolor.colored(text=field_b.upper(), color="green")
+
+            # print status to the screen
+            status = f"{field_a}: {content_a}\n{field_b}: {content_b}"
+            print(status)
+
+        else:
+            return None
 
     @staticmethod
     def refresh_screen():
@@ -142,10 +147,62 @@ class SaveRecipe(Create_Recipe):
         print(info_text)
 
     @staticmethod
-    def display_saving_status(status):
-        text = termcolor.colored(text=status, color="green")
+    def display_saving_status():
+        text = termcolor.colored(text="Data is being saved...", color="green")
         print(text)
         time.sleep(2)
-        confirmation = termcolor.colored(text="Recipe saved successfully.", color="green")
+        confirmation = termcolor.colored(text="Data saved successfully.", color="green")
         print(confirmation)
         time.sleep(2)
+
+
+class AddIngredient(Screen):
+    def __init__(self):
+        Screen.__init__(self)
+        self.title = "Add ingredients"
+        self.info = "All the Lorem Ipsum generators on the Internet tend to repeat predefined " \
+                    "chunks as necessary"
+
+
+class AddToComponent(ComponentSelector):
+    def __init__(self, component_menu_list):
+        ComponentSelector.__init__(self, components_menu_list=component_menu_list, recipe_status=None)
+        self.info = "The standard chunk of Lorem Ipsum used since the 1500s is reproduced " \
+                    "below for those interested."
+
+
+class NewIngredient(AddIngredient):
+    def __init__(self):
+        AddIngredient.__init__(self)
+        self.title = "Create New ingredient"
+        self.info = "All the Lorem Ipsum generators on the Internet tend to repeat predefined " \
+                    "chunks as necessary"
+
+
+class SaveIngredient(NewIngredient):
+    def __init__(self, new_value: str, values: list):
+        NewIngredient.__init__(self)
+        self.title = "Save ingredient"
+        self.info = str()
+        self.updated_values = values
+        self.new_value = new_value
+
+    def display_values(self):
+
+        for value in self.updated_values:
+            highlight = value
+            if highlight == self.new_value:
+                highlight = termcolor.colored(text=value, color='green')
+            print(highlight)
+
+    def render_screen(self):
+        self.refresh_screen()
+        self.display_logo()
+        self.display_info()
+        self.display_values()
+
+
+
+def display_error(e):
+    error = termcolor.colored(text=e.args[0], color='red')
+    print(error)
