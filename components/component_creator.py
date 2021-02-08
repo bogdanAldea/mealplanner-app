@@ -27,9 +27,9 @@ class ComponentCreator(component_manager.ComponentManager):
         target_component: list = self.loaded_data.get(component_type)
         target_component.append(new_component.get_name)
 
-
-
-
-
-
-
+    @staticmethod
+    def ingredient_is_stored(name_to_validate: str, stored_values: list):
+        if name_to_validate in stored_values:
+            return True
+        else:
+            return False
