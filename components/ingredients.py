@@ -5,10 +5,13 @@ CREATE RECIPES.
 
 
 class Ingredient:
+    """
+    Parent class that defines the representation of an ingredient.
+    """
 
     def __init__(self, obj_name: str, obj_type: str = None):
         """
-        Parent class that defines the representation of an ingredient.
+        Constructor of parent class. 
 
         :param obj_name: str
         :param obj_type: str
