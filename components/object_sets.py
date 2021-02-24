@@ -68,6 +68,9 @@ class IngredientSet:
     def set_quantity(self, value) -> None:
         self.quantity = value
 
+    def __str__(self):
+        return f"{self.name}: {self.quantity}"
+
     def export_dict(self) -> dict:
         """
         Method returns a dict version of the objects for json serialization.

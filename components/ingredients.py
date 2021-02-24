@@ -11,7 +11,7 @@ class Ingredient:
 
     def __init__(self, obj_name: str, obj_type: str = None):
         """
-        Constructor of parent class. 
+        Constructor of parent class.
 
         :param obj_name: str
         :param obj_type: str
