@@ -44,7 +44,7 @@ class Inventory:
         dict version on entire object. This is used for json serialization.
         :return: dict
         """
-        
+
         inventory_items_copy = self.obj_items.copy()
         self.obj_items.clear()
         self.obj_items = [item.__dict__ for item in inventory_items_copy]

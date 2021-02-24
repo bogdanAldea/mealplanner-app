@@ -30,6 +30,10 @@ class ComponentModel(models.model.Model):
         # generate with of component sets from dictionaries loaded form component json data
         self.component_data = [obj_sets.ComponentsSet(**data) for data in temp_file_data]
 
+    @property
+    def get_component_data(self):
+        return self.component_data
+
     def get_component_blueprint(self, request: int):
         """
         Method returns the desired component class based on user request

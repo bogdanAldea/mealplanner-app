@@ -49,10 +49,10 @@ class InventoryModel(main.Model):
         """
 
         # filter list of data and return requested list using given ingredient's type
-        target_item: inventory.Inventory = self.get_item(new_ingredient.get_type)
+        target_item: inventory.Inventory = self.get_item(new_ingredient.type)
 
         # create new ingredient set with default quantity of 0
-        ingredient_set = obj_sets.IngredientSet(new_ingredient.get_name, quantity=0)
+        ingredient_set = obj_sets.IngredientSet(new_ingredient.name, quantity=0)
 
         # append ingredient set to returned list
         target_item.add_new(ingredient_set)

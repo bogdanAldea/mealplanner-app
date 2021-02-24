@@ -29,6 +29,10 @@ class RecipeModel(main.Model):
         self.recipe_data = [recipe.Recipe(**data) for data in temp_file_data]
 
     @property
+    def get_recipe_data(self):
+        return self.recipe_data
+
+    @property
     def get_recipe_blueprint(self):
         return recipe.Recipe
 

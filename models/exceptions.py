@@ -17,3 +17,6 @@ class InvalidSaveRequest(Exception):
 class IngredientIsStored(Exception):
     ...
 
+
+class EmptyListOfValues(Exception):
+    ...
