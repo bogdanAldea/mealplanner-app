@@ -24,6 +24,9 @@ class Recipe:
         # generates a list of ingredient set objects from given list of ingredients dicts.
         self.obj_ingredients: list = [obj_set.IngredientSet(**data) for data in obj_ingredients]
 
+    # def __getitem__(self, item):
+    #     return getattr(self, item)
+
     @property
     def get_id(self):
         return self.ID
@@ -35,6 +38,9 @@ class Recipe:
     @property
     def get_ingredients(self):
         return self.obj_ingredients
+
+    def __str__(self):
+        return self.obj_name
 
     def export(self):
         """
